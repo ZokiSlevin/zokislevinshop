@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zokislevinshop.hr/sitemap.xml
+Sitemap: https://zoran-macesic.from.hr/sitemap.xml

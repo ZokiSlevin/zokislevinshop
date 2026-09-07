@@ -2,7 +2,7 @@ ZokiSlevinShop V5 SEO Report
 =============================
 
 Canonical domain used:
-https://zokislevinshop.hr
+https://zoran-macesic.from.hr
 
 MAIN PAGES OPTIMIZED: 10
 ------------------------
@@ -50,7 +50,7 @@ images/zokislevinshop-logo.webp
 IMPORTANT BEFORE GOING LIVE
 ---------------------------
 The canonical domain currently used is:
-https://zokislevinshop.hr
+https://zoran-macesic.from.hr
 
 If you choose a different final domain, replace this domain in:
 - all HTML canonical/OG/JSON-LD URLs
@@ -115,3 +115,12 @@ Each page includes:
 
 The homepage, business.html and home-property.html now link directly to these landing pages.
 The product catalog also exposes a View Details link for these five products.
+
+
+V6.2 FINAL LIVE DOMAIN
+----------------------
+All SEO absolute URLs now use the production domain:
+https://zoran-macesic.from.hr
+
+GitHub Pages CNAME included: zoran-macesic.from.hr
+404.html robots directive: noindex,follow

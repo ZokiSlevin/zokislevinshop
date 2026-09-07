@@ -15,9 +15,9 @@ CLEAN URL STRUCTURE
 /contact/
 
 On a custom domain, visitors see URLs such as:
-https://zokislevinshop.hr/
-https://zokislevinshop.hr/business/
-https://zokislevinshop.hr/contact/
+https://zoran-macesic.from.hr/
+https://zoran-macesic.from.hr/business/
+https://zoran-macesic.from.hr/contact/
 
 No .html filenames appear in normal navigation. Each route is a folder containing index.html.
 
@@ -29,7 +29,7 @@ The included .nojekyll file is intentional.
 CUSTOM DOMAIN
 -------------
 CNAME.example.txt is included. After the domain is configured in GitHub Pages, rename it to CNAME and keep only the domain name in that file.
-If your final domain is not zokislevinshop.hr, also update sitemap.xml.
+If your final domain is not zoran-macesic.from.hr, also update sitemap.xml.
 
 CONTACT FORM
 ------------
@@ -107,7 +107,7 @@ V5 SEO UPGRADE
 See SEO_REPORT.txt for the full list of changes.
 
 Canonical domain currently configured:
-https://zokislevinshop.hr
+https://zoran-macesic.from.hr
 
 If a different domain is chosen before launch, the canonical, Open Graph, JSON-LD,
 robots.txt and sitemap.xml URLs must be updated to the final domain.
@@ -126,3 +126,25 @@ V6.1 NAVIGATION FIX
   All Products
 - Section links scroll smoothly within the homepage.
 - The currently visible homepage section is highlighted while scrolling.
+
+
+V6.2 LIVE DOMAIN SEO
+--------------------
+Production domain: https://zoran-macesic.from.hr
+
+Updated for the live GitHub Pages custom domain:
+- Canonical URLs
+- Open Graph URLs and images
+- Twitter image URLs
+- JSON-LD / structured data
+- Product landing-page schemas
+- Breadcrumb schemas
+- sitemap.xml
+- robots.txt
+- GitHub Pages CNAME
+
+The 404 page is set to noindex,follow.
+
+IMPORTANT: Upload the CONTENTS of this folder to the repository root.
+Keep the included CNAME file in the repository; it contains only:
+zoran-macesic.from.hr
