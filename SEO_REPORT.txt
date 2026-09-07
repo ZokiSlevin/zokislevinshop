@@ -1,0 +1,117 @@
+ZokiSlevinShop V5 SEO Report
+=============================
+
+Canonical domain used:
+https://zokislevinshop.hr
+
+MAIN PAGES OPTIMIZED: 10
+------------------------
+1. index.html
+2. catalog.html
+3. business.html
+4. vehicle.html
+5. home-property.html
+6. finance.html
+7. productivity.html
+8. presets.html
+9. other.html
+10. contact.html
+
+ADDED
+-----
+- Unique SEO title for all 10 pages
+- Unique meta description for all 10 pages
+- Canonical URL for all 10 pages
+- robots meta tag
+- Open Graph title, description, URL and image
+- Twitter Card metadata
+- JSON-LD structured data
+- OnlineStore schema
+- Service schema for custom spreadsheet development
+- Breadcrumb structured data
+- CollectionPage / ContactPage structured data
+- privacy.html
+- Privacy link in site footer
+- WebP copies of all three branding images
+- PNG fallbacks retained
+- Explicit image width/height
+- Lazy loading on supporting banner images
+- Improved sitemap.xml with lastmod/changefreq/priority
+- Sitemap declaration in robots.txt
+- Custom Spreadsheet Development SEO section on homepage
+- Additional service content on contact.html
+
+WEBP FILES
+----------
+images/banner-zokislevinshop.webp
+images/banner-zokislevinshop-etsy.webp
+images/zokislevinshop-logo.webp
+
+IMPORTANT BEFORE GOING LIVE
+---------------------------
+The canonical domain currently used is:
+https://zokislevinshop.hr
+
+If you choose a different final domain, replace this domain in:
+- all HTML canonical/OG/JSON-LD URLs
+- sitemap.xml
+- robots.txt
+
+CONTACT FORM / PRIVACY
+----------------------
+The privacy page reflects the current site setup:
+- FormSubmit contact form
+- Etsy outbound product links
+- No website analytics/advertising scripts assumed
+
+If you later add Google Analytics, Meta Pixel, newsletter signup, payment processing,
+user accounts or other third-party data processing, update the Privacy Policy and
+add any consent controls required for your jurisdiction.
+
+NEXT SEO PHASE
+--------------
+The next planned phase is five dedicated product landing pages:
+1. Rental Property Spreadsheet
+2. Home Maintenance Tracker
+3. Inventory Tracker Spreadsheet
+4. Home Inventory Spreadsheet
+5. Mileage Tracker
+
+
+V6 PRODUCT LANDING PAGES
+------------------------
+Added five dedicated SEO product pages:
+
+1. rental-property-spreadsheet.html
+   Primary topic: Rental Property Spreadsheet
+
+2. home-maintenance-tracker.html
+   Primary topic: Home Maintenance Tracker Spreadsheet
+
+3. inventory-tracker-spreadsheet.html
+   Primary topic: Inventory Tracker Spreadsheet
+
+4. home-inventory-spreadsheet.html
+   Primary topic: Home Inventory Spreadsheet
+
+5. mileage-tracker.html
+   Primary topic: Mileage Tracker Spreadsheet
+
+Each page includes:
+- Unique SEO title and meta description
+- Canonical URL
+- Open Graph and Twitter metadata
+- Product structured data
+- Breadcrumb structured data
+- FAQPage structured data
+- Detailed product copy
+- What-you-can-track section
+- Benefits
+- Perfect-for section
+- FAQ
+- Related product internal links
+- Etsy CTA
+- Custom project CTA
+
+The homepage, business.html and home-property.html now link directly to these landing pages.
+The product catalog also exposes a View Details link for these five products.

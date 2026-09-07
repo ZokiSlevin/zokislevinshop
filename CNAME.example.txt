@@ -1,0 +1,3 @@
+zokislevinshop.hr
+
+Rename this file to CNAME only after configuring the domain in GitHub Pages.
