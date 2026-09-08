@@ -1,0 +1,9 @@
+CONTACT UPDATE - 2026-09-08
+
+- Added a permanent Project inquiry / Contact section above the footer on all normal site pages.
+- Added Contact to primary navigation; it scrolls smoothly to the local contact section.
+- Custom Project buttons and the floating Contact shortcut now scroll to the same section.
+- Removed duplicate slide-out contact modal markup from pages.
+- Expanded inquiry form options for Canva templates, resume/career documents, Word/Google Docs and other new product types.
+- Updated the dedicated contact.html copy while preserving its original visual layout.
+- Existing page structure, product sections, catalog and branding otherwise remain unchanged.

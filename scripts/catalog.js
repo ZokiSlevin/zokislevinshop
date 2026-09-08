@@ -8,7 +8,9 @@
     business: '▦',
     vehicle: 'V',
     home: '⌂',
-    finance: '€'
+    finance: '€',
+    canva: 'C',
+    career: 'CV'
   }[category] || '✓');
 
   const escapeHTML = value => String(value ?? '')
@@ -23,10 +25,15 @@
     return `
       <article class="product-card" data-category="${escapeHTML(product.category)}">
         ${product.featured ? '<span class="product-featured">Featured</span>' : ''}
+        ${product.image ? `
+        <div class="product-visual product-visual-image">
+          <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.imageAlt || product.title)}" loading="lazy">
+          <span class="product-category">${escapeHTML(product.categoryLabel)}</span>
+        </div>` : `
         <div class="product-visual">
           <div class="product-mark" aria-hidden="true">${escapeHTML(iconFor(product.category))}</div>
           <span class="product-category">${escapeHTML(product.categoryLabel)}</span>
-        </div>
+        </div>`}
         <div class="product-body">
           <h3>${escapeHTML(product.title)}</h3>
           <p class="product-subtitle">${escapeHTML(product.subtitle)}</p>
@@ -47,7 +54,16 @@
   function initFeatured() {
     const grid = document.getElementById('featured-grid');
     if (!grid) return;
-    const featured = products.filter(p => p.featured).slice(0, 6);
+
+    const requestedIds = (grid.dataset.productIds || '')
+      .split(',')
+      .map(id => id.trim())
+      .filter(Boolean);
+
+    const featured = requestedIds.length
+      ? requestedIds.map(id => products.find(product => product.id === id)).filter(Boolean)
+      : products.filter(product => product.featured).slice(0, 6);
+
     grid.innerHTML = featured.map(productCard).join('');
   }
 

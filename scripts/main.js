@@ -40,8 +40,21 @@
     });
   }
 })();
-\n\n// Floating custom project contact modal\n(() => {\n  const modal = document.getElementById('contact-modal');\n  const openers = [document.getElementById('open-contact'), ...document.querySelectorAll('.js-open-contact')].filter(Boolean);\n  const closers = [...document.querySelectorAll('[data-close-contact]')];\n  let previousFocus = null;\n  const openModal = () => {\n    if (!modal) return;\n    previousFocus = document.activeElement;\n    modal.classList.add('is-open');\n    modal.setAttribute('aria-hidden','false');\n    document.body.classList.add('modal-open');\n    setTimeout(() => modal.querySelector('input:not([type="hidden"])')?.focus(), 40);\n  };\n  const closeModal = () => {\n    if (!modal) return;\n    modal.classList.remove('is-open');\n    modal.setAttribute('aria-hidden','true');\n    document.body.classList.remove('modal-open');\n    previousFocus?.focus?.();\n  };\n  openers.forEach(btn => btn.addEventListener('click', openModal));\n  closers.forEach(btn => btn.addEventListener('click', closeModal));\n  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });\n
 
+
+// Contact shortcuts + smooth section navigation
+(() => {
+  const contactTarget = document.getElementById('contact');
+  const contactOpeners = [document.getElementById('open-contact'), ...document.querySelectorAll('.js-open-contact')].filter(Boolean);
+
+  contactOpeners.forEach(control => {
+    control.addEventListener('click', event => {
+      if (!contactTarget) return;
+      event.preventDefault();
+      contactTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', '#contact');
+    });
+  });
 
   /* Home page section navigation */
   const homeSectionLinks = [...document.querySelectorAll('.primary-nav a[href^="#"]')];
@@ -56,9 +69,10 @@
     });
   });
 
-  /* Highlight the current homepage section while scrolling.
-     Only applies to hash links; page links keep their own active state. */
-  if (homeSectionLinks.length && 'IntersectionObserver' in window) {
+  /* Highlight homepage sections while scrolling. On subpages, hash links
+     still scroll smoothly but do not overwrite the page's active navigation state. */
+  const isHomePage = location.pathname.endsWith('/') || location.pathname.endsWith('/index.html');
+  if (homeSectionLinks.length && isHomePage && 'IntersectionObserver' in window) {
     const observed = homeSectionLinks
       .map(link => document.querySelector(link.getAttribute('href')))
       .filter(Boolean);
@@ -91,4 +105,4 @@
     }, { passive: true });
   }
 
-})();\n
+})();

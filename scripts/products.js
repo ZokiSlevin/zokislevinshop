@@ -1,5 +1,100 @@
 window.ZS_PRODUCTS = [
   {
+    "id": "new-grad-nurse-resume",
+    "category": "career",
+    "categoryLabel": "Resume & Career Kits",
+    "title": "New Grad Nurse Resume Bundle",
+    "subtitle": "ATS-friendly job application kit for Word & Google Docs",
+    "description": "Premium new-graduate nursing resume bundle with 1-page and 2-page resumes, cover letters, references, guides, follow-up emails and a job application tracker.",
+    "tags": [
+      "Nursing",
+      "Resume",
+      "Instant Download"
+    ],
+    "featured": true,
+    "url": "https://www.etsy.com/shop/ZokiSlevinShop?search_query=New+Grad+Nurse+Resume+Bundle",
+    "urlStatus": "shop-search-fallback",
+    "landingPage": "new-grad-nurse-resume-bundle.html",
+    "image": "images/products/new-grad-nurse-resume.webp",
+    "imageAlt": "Premium New Grad Nurse Resume Bundle digital download preview"
+  },
+  {
+    "id": "ugc-creator-media-kit",
+    "category": "canva",
+    "categoryLabel": "Canva Templates",
+    "title": "UGC Creator Media Kit Canva Template",
+    "subtitle": "10-page influencer portfolio, rate card & brand pitch kit",
+    "description": "A polished 10-page creator media kit for UGC creators and influencers to present services, audience insights, portfolio work, case studies, packages and contact details.",
+    "tags": [
+      "UGC Creator",
+      "Media Kit",
+      "Made-to-Order"
+    ],
+    "featured": true,
+    "url": "https://www.etsy.com/shop/ZokiSlevinShop?search_query=UGC+Creator+Media+Kit",
+    "urlStatus": "shop-search-fallback",
+    "landingPage": "ugc-creator-media-kit.html",
+    "image": "images/products/ugc-creator-media-kit.webp",
+    "imageAlt": "UGC Creator Media Kit Canva template preview"
+  },
+  {
+    "id": "bookstagram-canva",
+    "category": "canva",
+    "categoryLabel": "Canva Templates",
+    "title": "Bookstagram Canva Templates",
+    "subtitle": "20 editable posts, stories & Reel covers for book creators",
+    "description": "A 20-template Bookstagram content bundle with book reviews, TBRs, wrap-ups, recommendations, reading stories, polls and Reel covers.",
+    "tags": [
+      "Bookstagram",
+      "Canva",
+      "20 Templates"
+    ],
+    "featured": true,
+    "url": "https://www.etsy.com/shop/ZokiSlevinShop?search_query=Bookstagram+Canva+Templates",
+    "urlStatus": "shop-search-fallback",
+    "landingPage": "bookstagram-canva-templates.html",
+    "image": "images/products/bookstagram-canva.webp",
+    "imageAlt": "20 Bookstagram Canva templates preview"
+  },
+  {
+    "id": "auto-detailing-canva",
+    "category": "canva",
+    "categoryLabel": "Canva Templates",
+    "title": "Auto Detailing Instagram Canva Templates",
+    "subtitle": "12 editable car detailing posts, stories & Reel cover",
+    "description": "A dark automotive social-media kit for detailers, mobile detailing businesses, ceramic coating studios and car-care brands.",
+    "tags": [
+      "Auto Detailing",
+      "Instagram",
+      "12 Templates"
+    ],
+    "featured": true,
+    "url": "https://www.etsy.com/shop/ZokiSlevinShop?search_query=Auto+Detailing+Instagram+Canva+Templates",
+    "urlStatus": "shop-search-fallback",
+    "landingPage": "auto-detailing-canva-templates.html",
+    "image": "images/products/auto-detailing-canva.webp",
+    "imageAlt": "12 Auto Detailing Instagram Canva templates preview"
+  },
+  {
+    "id": "beauty-salon-canva",
+    "category": "canva",
+    "categoryLabel": "Canva Templates",
+    "title": "Beauty Salon Instagram Canva Templates",
+    "subtitle": "8 editable social media posts, stories & Reel cover",
+    "description": "Luxury neutral Canva templates for salons, estheticians, lash and nail artists, skincare professionals, spas and beauty entrepreneurs.",
+    "tags": [
+      "Beauty Salon",
+      "Instagram",
+      "8 Templates"
+    ],
+    "featured": true,
+    "url": "https://www.etsy.com/listing/4570680344/beauty-salon-instagram-canva-templates-8",
+    "urlStatus": "direct",
+    "landingPage": "beauty-salon-canva-templates.html",
+    "image": "images/products/beauty-salon-canva.webp",
+    "imageAlt": "8 Beauty Salon Instagram Canva templates preview"
+  },
+  {
     "id": "freelancer-bundle",
     "category": "business",
     "categoryLabel": "Business & Freelancer",

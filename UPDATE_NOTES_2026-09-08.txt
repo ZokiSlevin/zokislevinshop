@@ -1,0 +1,22 @@
+Website refresh based on the ORIGINAL uploaded project layout.
+
+Preserved:
+- Original homepage navigation: Home, Categories, Featured, Custom Work, About, All Products
+- Original section order and overall styling
+- Original category/product card system and custom-work sections
+
+Updated:
+- New ZokiSlevinShop logo and 1600x400 banner
+- Banner forced to display uncropped at natural aspect ratio
+- Catalog expanded from 25 to 30 products
+- Added Canva Templates and Resume & Career categories
+- Added 5 new products and their preview imagery
+- Added category/detail pages for the new product families
+- Homepage copy, trust strip, featured guides and About text broadened beyond Excel
+- Catalog filters include Canva and Resume & Career
+- Fixed literal escaped newlines that broke main.js/CSS in the original source
+
+HOME FEATURED PRODUCT GUIDES UPDATE
+- Replaced the text-only Featured Product Guides links on the Home page with the same product-card component used under All Products.
+- The five existing featured guide products are preserved in the same order.
+- Product images, category labels, subtitle, description, tags, View Details and Etsy actions now render from the shared product data.
