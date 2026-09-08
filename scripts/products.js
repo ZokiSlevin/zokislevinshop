@@ -14,7 +14,7 @@ window.ZS_PRODUCTS = [
     "featured": true,
     "url": "https://www.etsy.com/shop/ZokiSlevinShop?search_query=New+Grad+Nurse+Resume+Bundle",
     "urlStatus": "shop-search-fallback",
-    "landingPage": "new-grad-nurse-resume-bundle.html",
+    "landingPage": "/new-grad-nurse-resume-bundle",
     "image": "images/products/new-grad-nurse-resume.webp",
     "imageAlt": "Premium New Grad Nurse Resume Bundle digital download preview"
   },
@@ -33,7 +33,7 @@ window.ZS_PRODUCTS = [
     "featured": true,
     "url": "https://www.etsy.com/shop/ZokiSlevinShop?search_query=UGC+Creator+Media+Kit",
     "urlStatus": "shop-search-fallback",
-    "landingPage": "ugc-creator-media-kit.html",
+    "landingPage": "/ugc-creator-media-kit",
     "image": "images/products/ugc-creator-media-kit.webp",
     "imageAlt": "UGC Creator Media Kit Canva template preview"
   },
@@ -52,7 +52,7 @@ window.ZS_PRODUCTS = [
     "featured": true,
     "url": "https://www.etsy.com/shop/ZokiSlevinShop?search_query=Bookstagram+Canva+Templates",
     "urlStatus": "shop-search-fallback",
-    "landingPage": "bookstagram-canva-templates.html",
+    "landingPage": "/bookstagram-canva-templates",
     "image": "images/products/bookstagram-canva.webp",
     "imageAlt": "20 Bookstagram Canva templates preview"
   },
@@ -71,7 +71,7 @@ window.ZS_PRODUCTS = [
     "featured": true,
     "url": "https://www.etsy.com/shop/ZokiSlevinShop?search_query=Auto+Detailing+Instagram+Canva+Templates",
     "urlStatus": "shop-search-fallback",
-    "landingPage": "auto-detailing-canva-templates.html",
+    "landingPage": "/auto-detailing-canva-templates",
     "image": "images/products/auto-detailing-canva.webp",
     "imageAlt": "12 Auto Detailing Instagram Canva templates preview"
   },
@@ -90,7 +90,7 @@ window.ZS_PRODUCTS = [
     "featured": true,
     "url": "https://www.etsy.com/listing/4570680344/beauty-salon-instagram-canva-templates-8",
     "urlStatus": "direct",
-    "landingPage": "beauty-salon-canva-templates.html",
+    "landingPage": "/beauty-salon-canva-templates",
     "image": "images/products/beauty-salon-canva.webp",
     "imageAlt": "8 Beauty Salon Instagram Canva templates preview"
   },
@@ -205,7 +205,7 @@ window.ZS_PRODUCTS = [
     "featured": true,
     "url": "https://www.etsy.com/shop/ZokiSlevinShop?search_query=Inventory+Tracker+Spreadsheet",
     "urlStatus": "shop-search-fallback",
-    "landingPage": "inventory-tracker-spreadsheet.html"
+    "landingPage": "/inventory-tracker-spreadsheet"
   },
   {
     "id": "mileage-tracker",
@@ -222,7 +222,7 @@ window.ZS_PRODUCTS = [
     "featured": true,
     "url": "https://www.etsy.com/shop/ZokiSlevinShop?search_query=Mileage+Tracker+Spreadsheet",
     "urlStatus": "shop-search-fallback",
-    "landingPage": "mileage-tracker.html"
+    "landingPage": "/mileage-tracker"
   },
   {
     "id": "vehicle-bundle",
@@ -335,7 +335,7 @@ window.ZS_PRODUCTS = [
     "featured": true,
     "url": "https://www.etsy.com/shop/ZokiSlevinShop?search_query=Home+Maintenance+Tracker+Spreadsheet",
     "urlStatus": "shop-search-fallback",
-    "landingPage": "home-maintenance-tracker.html"
+    "landingPage": "/home-maintenance-tracker"
   },
   {
     "id": "home-inventory",
@@ -352,7 +352,7 @@ window.ZS_PRODUCTS = [
     "featured": true,
     "url": "https://www.etsy.com/shop/ZokiSlevinShop?search_query=Home+Inventory+Spreadsheet",
     "urlStatus": "shop-search-fallback",
-    "landingPage": "home-inventory-spreadsheet.html"
+    "landingPage": "/home-inventory-spreadsheet"
   },
   {
     "id": "rental-property",
@@ -369,7 +369,7 @@ window.ZS_PRODUCTS = [
     "featured": true,
     "url": "https://www.etsy.com/shop/ZokiSlevinShop?search_query=Rental+Property+Spreadsheet",
     "urlStatus": "shop-search-fallback",
-    "landingPage": "rental-property-spreadsheet.html"
+    "landingPage": "/rental-property-spreadsheet"
   },
   {
     "id": "moving-planner",

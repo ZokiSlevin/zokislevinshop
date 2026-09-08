@@ -1,0 +1,17 @@
+CLEAN URL UPDATE
+
+Public URL scheme:
+- Home: https://zoran-macesic.from.hr/
+- Home sections: /#categories, /#featured, /#custom-work, /#about, /#contact
+- Catalog: /catalog
+- Category pages: /business, /vehicle, /home-property, /finance, /productivity, /presets, /other, /canva-templates, /resume-career
+- Product guides: /<product-slug>
+- Contact: /contact
+- Privacy: /privacy
+
+Implementation:
+- Existing flat .html files are preserved for GitHub Pages hosting.
+- All internal links now point to extensionless URLs.
+- Canonical and og:url metadata use extensionless URLs.
+- sitemap.xml uses extensionless URLs.
+- main.js removes .html or /index.html from the visible URL when an old URL is opened.

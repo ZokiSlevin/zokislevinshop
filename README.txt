@@ -148,3 +148,12 @@ The 404 page is set to noindex,follow.
 IMPORTANT: Upload the CONTENTS of this folder to the repository root.
 Keep the included CNAME file in the repository; it contains only:
 zoran-macesic.from.hr
+
+CLEAN URL UPDATE - 2026-09-08
+-----------------------------
+Public/internal links now use extensionless GitHub Pages URLs:
+  /catalog instead of /catalog.html
+  /new-grad-nurse-resume-bundle instead of /new-grad-nurse-resume-bundle.html
+  /#categories, /#featured, /#custom-work, /#about and /#contact for Home sections.
+
+The physical .html files remain in the repository because GitHub Pages serves them at the matching extensionless URL. A small History API normalizer also removes .html (and /index.html) from the visible browser URL when an old/bookmarked .html URL is opened. Canonical URLs and sitemap entries use the clean form.

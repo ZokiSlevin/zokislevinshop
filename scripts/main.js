@@ -1,3 +1,20 @@
+// Clean public URLs on GitHub Pages while keeping the existing flat .html files.
+(() => {
+  const { pathname, search, hash } = window.location;
+  let cleanPath = pathname;
+
+  if (cleanPath.endsWith('/index.html')) {
+    cleanPath = cleanPath.slice(0, -10) || '/';
+  } else if (cleanPath.endsWith('/index')) {
+    cleanPath = cleanPath.slice(0, -6) || '/';
+  } else if (cleanPath.endsWith('.html')) {
+    cleanPath = cleanPath.slice(0, -5);
+  }
+
+  if (cleanPath !== pathname) {
+    history.replaceState(null, '', cleanPath + search + hash);
+  }
+})();
 
 (() => {
   'use strict';
@@ -71,7 +88,7 @@
 
   /* Highlight homepage sections while scrolling. On subpages, hash links
      still scroll smoothly but do not overwrite the page's active navigation state. */
-  const isHomePage = location.pathname.endsWith('/') || location.pathname.endsWith('/index.html');
+  const isHomePage = location.pathname.endsWith('/') || location.pathname.endsWith('/index.html') || location.pathname.endsWith('/index');
   if (homeSectionLinks.length && isHomePage && 'IntersectionObserver' in window) {
     const observed = homeSectionLinks
       .map(link => document.querySelector(link.getAttribute('href')))
@@ -99,7 +116,7 @@
     window.addEventListener('scroll', () => {
       if (window.scrollY < 120) {
         document.querySelectorAll('.primary-nav a').forEach(a => a.classList.remove('active'));
-        const home = document.querySelector('.primary-nav a[href="index.html"]');
+        const home = document.querySelector('.primary-nav a[href="/"]');
         if (home) home.classList.add('active');
       }
     }, { passive: true });
