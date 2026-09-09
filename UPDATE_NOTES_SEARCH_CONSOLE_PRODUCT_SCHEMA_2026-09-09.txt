@@ -1,0 +1,33 @@
+SEARCH CONSOLE PRODUCT SNIPPET FIX - 2026-09-09
+
+Issue reported by Google Search Console:
+"Either offers, review or aggregateRating should be specified" for Product snippets.
+
+Cause:
+Five spreadsheet guide pages contained schema.org Product JSON-LD without offers, review or aggregateRating.
+
+Fix applied:
+- Removed Product structured data from the five guide pages.
+- Replaced it with WebPage + CreativeWork structured data.
+- Kept BreadcrumbList and FAQPage structured data unchanged.
+- Kept the Etsy BuyAction as the external purchase destination.
+- No ratings/reviews were fabricated.
+- No Etsy prices were hardcoded, avoiding stale price markup when Etsy prices or discounts change.
+
+Updated pages:
+- /home-inventory-spreadsheet
+- /home-maintenance-tracker
+- /inventory-tracker-spreadsheet
+- /mileage-tracker
+- /rental-property-spreadsheet
+
+Validation performed:
+- No @type Product JSON-LD remains in the project.
+- All JSON-LD blocks parse successfully.
+
+After deployment:
+1. Open Google Search Console.
+2. Open the Product snippets / Isjecci proizvoda report.
+3. Open the issue "Either offers, review or aggregateRating should be specified".
+4. Click Validate Fix / Potvrdi ispravak.
+5. Google must recrawl affected URLs, so the report may not clear immediately.
