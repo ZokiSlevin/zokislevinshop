@@ -51,7 +51,8 @@ A fixed Custom Project button stays visible while scrolling on desktop and mobil
 
 PRODUCT LINKS
 -------------
-The existing Etsy URLs and search fallbacks remain centralized in scripts/products.js.
+All 41 Etsy products are centralized in scripts/products.js.
+Each product uses the direct Etsy listing URL supplied in the 2026-09-24 listing update; search-query fallbacks are no longer used.
 
 
 LOCAL TESTING + CLEAN URLS
@@ -157,3 +158,46 @@ Public/internal links now use extensionless GitHub Pages URLs:
   /#categories, /#featured, /#custom-work, /#about and /#contact for Home sections.
 
 The physical .html files remain in the repository because GitHub Pages serves them at the matching extensionless URL. A small History API normalizer also removes .html (and /index.html) from the visible browser URL when an old/bookmarked .html URL is opened. Canonical URLs and sitemap entries use the clean form.
+
+
+V7 ETSY CATALOG SYNC - 2026-09-24
+---------------------------------
+- Catalog synchronized to 41 active Etsy listings.
+- Exact supplied listing titles and direct listing URLs centralized in scripts/products.js.
+- Added 10 products that were missing from the previous 30-product website.
+- Updated homepage/category counts and featured products.
+- Removed legacy Etsy shop-search fallback links from product CTAs and structured data.
+- Standardized footer category navigation across the website.
+- Updated catalog SEO copy and sitemap last-modified dates.
+
+V8 CONSISTENT PRODUCT DETAILS MODAL - 2026-09-24
+-------------------------------------------------
+- Every product card now uses the same two actions: View Details and View on Etsy.
+- View Details opens a single reusable modal instead of sending only selected products to separate landing pages.
+- The modal contains the product category, format, delivery type, short description, What's Included list and Key Features list.
+- The modal closes with the X button, by clicking outside the panel, or with the Esc key.
+- Keyboard focus is returned to the product card button after closing.
+- Mobile layout expands the modal to nearly the full screen for easier reading.
+- All 41 modal records are centralized in scripts/products.js, together with the exact Etsy listing title and URL.
+- Existing detailed product HTML pages are retained for SEO / indexed traffic, but the uneven "Detailed product pages" sections were removed from category pages so every catalog item has the same browsing path.
+- Existing direct Etsy checkout links remain available on every card and inside every modal.
+
+2026-09-24 PRODUCT PREVIEW IMAGE UPDATE
+- All 41 catalog products now display a product preview image.
+- Added China Import Inventory Planner as the 41st product under Business & Freelancer, with a local preview image and direct Etsy link.
+- Existing local product previews were preserved.
+- Products that previously used only a category icon now use the current Etsy listing preview image from i.etsystatic.com.
+- If an external preview image cannot load (for example when testing fully offline without internet), the card automatically falls back to the original category icon so the layout remains usable.
+- View Details modals use the same product preview image and the same fallback behavior.
+
+
+V9 SOCIAL + HOME POLISH - 2026-09-24
+--------------------------------------
+- Added Instagram profile: https://www.instagram.com/zokislevinshop/
+- Added Pinterest profile: https://www.pinterest.com/ZokiSlevinShop/
+- Social links are shown in the footer across the website.
+- Homepage About section includes compact Instagram and Pinterest follow links.
+- OnlineStore structured data sameAs now connects Etsy, Instagram and Pinterest.
+- Removed the duplicate second Custom Work marketing section from the homepage; the original custom-project block is now the #custom-work navigation target.
+- Added capability chips to the retained Custom Work section so the useful SEO/context terms remain visible without repeating the same sales message twice.
+- Added cursor:pointer to the shared .btn style so button elements such as Custom Project consistently show the hand cursor.

@@ -1,5 +1,8 @@
-// Clean public URLs on GitHub Pages while keeping the existing flat .html files.
+// Keep clean public URLs online, but preserve real .html filenames when the
+// site is opened directly from disk (file://) for offline preview.
 (() => {
+  if (window.location.protocol === 'file:') return;
+
   const { pathname, search, hash } = window.location;
   let cleanPath = pathname;
 
@@ -14,6 +17,37 @@
   if (cleanPath !== pathname) {
     history.replaceState(null, '', cleanPath + search + hash);
   }
+})();
+
+// Offline compatibility. Root-relative links such as /catalog are correct for
+// the hosted site, but under file:// they point to the drive root (for example
+// D:/catalog). Convert them to the matching local .html files only offline.
+(() => {
+  if (window.location.protocol !== 'file:') return;
+
+  const toLocalFile = href => {
+    if (!href || !href.startsWith('/') || href.startsWith('//')) return href;
+
+    const hashIndex = href.indexOf('#');
+    const queryIndex = href.indexOf('?');
+    const cutPoints = [hashIndex, queryIndex].filter(index => index >= 0);
+    const splitAt = cutPoints.length ? Math.min(...cutPoints) : href.length;
+    const route = href.slice(0, splitAt);
+    const suffix = href.slice(splitAt);
+
+    if (route === '/') return `index.html${suffix}`;
+
+    const cleanRoute = route.replace(/^\/+|\/+$/g, '');
+    if (!cleanRoute) return `index.html${suffix}`;
+    if (cleanRoute.endsWith('.html')) return `${cleanRoute}${suffix}`;
+
+    return `${cleanRoute}.html${suffix}`;
+  };
+
+  document.querySelectorAll('a[href^="/"]').forEach(link => {
+    const href = link.getAttribute('href');
+    link.setAttribute('href', toLocalFile(href));
+  });
 })();
 
 (() => {
@@ -116,7 +150,7 @@
     window.addEventListener('scroll', () => {
       if (window.scrollY < 120) {
         document.querySelectorAll('.primary-nav a').forEach(a => a.classList.remove('active'));
-        const home = document.querySelector('.primary-nav a[href="/"]');
+        const home = document.querySelector('.primary-nav a[href="/"], .primary-nav a[href="index.html"]');
         if (home) home.classList.add('active');
       }
     }, { passive: true });

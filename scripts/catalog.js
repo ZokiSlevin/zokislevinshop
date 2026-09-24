@@ -1,4 +1,3 @@
-
 (() => {
   'use strict';
 
@@ -10,7 +9,10 @@
     home: '⌂',
     finance: '€',
     canva: 'C',
-    career: 'CV'
+    career: 'CV',
+    productivity: '✓',
+    presets: '✦',
+    other: '♥'
   }[category] || '✓');
 
   const escapeHTML = value => String(value ?? '')
@@ -20,6 +22,10 @@
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
 
+  const listHTML = items => (items || [])
+    .map(item => `<li>${escapeHTML(item)}</li>`)
+    .join('');
+
   const productCard = product => {
     const tags = (product.tags || []).map(tag => `<span>${escapeHTML(tag)}</span>`).join('');
     return `
@@ -27,7 +33,10 @@
         ${product.featured ? '<span class="product-featured">Featured</span>' : ''}
         ${product.image ? `
         <div class="product-visual product-visual-image">
-          <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.imageAlt || product.title)}" loading="lazy">
+          <div class="product-image-fallback" aria-hidden="true">
+            <div class="product-mark">${escapeHTML(iconFor(product.category))}</div>
+          </div>
+          <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.imageAlt || product.title)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true; this.parentElement.classList.add('is-image-fallback');">
           <span class="product-category">${escapeHTML(product.categoryLabel)}</span>
         </div>` : `
         <div class="product-visual">
@@ -40,16 +49,166 @@
           <p class="product-description">${escapeHTML(product.description)}</p>
           <div class="product-tags">${tags}</div>
           <div class="product-actions product-actions-stack">
-            ${product.landingPage
-              ? `<a class="product-detail-link" href="${escapeHTML(product.landingPage)}">View Details</a>`
-              : ''}
+            <button class="product-detail-link" type="button" data-product-id="${escapeHTML(product.id)}" aria-haspopup="dialog">View Details</button>
             <a class="product-etsy-link" href="${escapeHTML(product.url)}" target="_blank" rel="noopener">View on Etsy →</a>
-            <small>Current price on Etsy</small>
+            <small>Checkout and delivery on Etsy</small>
           </div>
         </div>
       </article>
     `;
   };
+
+  let modal = null;
+  let modalPanel = null;
+  let modalContent = null;
+  let lastTrigger = null;
+
+  function ensureProductModal() {
+    if (modal) return modal;
+
+    document.body.insertAdjacentHTML('beforeend', `
+      <div class="product-modal" id="product-detail-modal" aria-hidden="true">
+        <div class="product-modal-backdrop" data-product-modal-close></div>
+        <section class="product-modal-panel" role="dialog" aria-modal="true" aria-labelledby="product-modal-title" tabindex="-1">
+          <button class="product-modal-close" type="button" aria-label="Close product details" data-product-modal-close>
+            <span aria-hidden="true">×</span>
+          </button>
+          <div class="product-modal-content" id="product-modal-content"></div>
+        </section>
+      </div>
+    `);
+
+    modal = document.getElementById('product-detail-modal');
+    modalPanel = modal.querySelector('.product-modal-panel');
+    modalContent = document.getElementById('product-modal-content');
+
+    modal.addEventListener('click', event => {
+      if (event.target.closest('[data-product-modal-close]')) closeProductModal();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (!modal.classList.contains('is-open')) return;
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeProductModal();
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+      const focusable = [...modalPanel.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )].filter(el => !el.hidden && el.offsetParent !== null);
+
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    return modal;
+  }
+
+  function modalVisual(product) {
+    if (product.image) {
+      return `
+        <div class="product-modal-preview product-modal-preview-image">
+          <div class="product-modal-image-fallback" aria-hidden="true">
+            <div class="product-modal-mark">${escapeHTML(iconFor(product.category))}</div>
+            <span>${escapeHTML(product.categoryLabel)}</span>
+          </div>
+          <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.imageAlt || product.title)}" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true; this.parentElement.classList.add('is-image-fallback');">
+        </div>
+      `;
+    }
+
+    return `
+      <div class="product-modal-preview">
+        <div class="product-modal-mark" aria-hidden="true">${escapeHTML(iconFor(product.category))}</div>
+        <span>${escapeHTML(product.categoryLabel)}</span>
+      </div>
+    `;
+  }
+
+  function openProductModal(productId, trigger) {
+    const product = products.find(item => item.id === productId);
+    if (!product) return;
+
+    ensureProductModal();
+    lastTrigger = trigger || document.activeElement;
+
+    const badges = [product.categoryLabel, product.format, product.delivery]
+      .filter(Boolean)
+      .map(value => `<span>${escapeHTML(value)}</span>`)
+      .join('');
+
+    modalContent.innerHTML = `
+      <div class="product-modal-hero">
+        ${modalVisual(product)}
+        <div class="product-modal-heading">
+          <div class="product-modal-badges">${badges}</div>
+          <h2 id="product-modal-title">${escapeHTML(product.title)}</h2>
+          <p class="product-modal-subtitle">${escapeHTML(product.subtitle)}</p>
+          <p class="product-modal-description">${escapeHTML(product.description)}</p>
+        </div>
+      </div>
+
+      <div class="product-modal-detail-grid">
+        <section class="product-modal-detail-card">
+          <h3>What’s included</h3>
+          <ul>${listHTML(product.included)}</ul>
+        </section>
+        <section class="product-modal-detail-card">
+          <h3>Key features</h3>
+          <ul>${listHTML(product.features)}</ul>
+        </section>
+      </div>
+
+      <div class="product-modal-footer">
+        <div>
+          <strong>Ready to see the full listing?</strong>
+          <span>Current pricing, availability, checkout and digital delivery are handled on Etsy.</span>
+        </div>
+        <a class="btn btn-primary product-modal-etsy" href="${escapeHTML(product.url)}" target="_blank" rel="noopener">View on Etsy →</a>
+      </div>
+    `;
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('product-modal-open');
+
+    requestAnimationFrame(() => {
+      const closeButton = modal.querySelector('.product-modal-close');
+      if (closeButton) closeButton.focus();
+      else modalPanel.focus();
+    });
+  }
+
+  function closeProductModal() {
+    if (!modal || !modal.classList.contains('is-open')) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('product-modal-open');
+
+    if (lastTrigger && typeof lastTrigger.focus === 'function') {
+      lastTrigger.focus();
+    }
+    lastTrigger = null;
+  }
+
+  document.addEventListener('click', event => {
+    const trigger = event.target.closest('.product-detail-link[data-product-id]');
+    if (!trigger) return;
+    event.preventDefault();
+    openProductModal(trigger.dataset.productId, trigger);
+  });
 
   function initFeatured() {
     const grid = document.getElementById('featured-grid');
@@ -88,7 +247,11 @@
           product.subtitle,
           product.description,
           product.categoryLabel,
-          ...(product.tags || [])
+          product.format,
+          product.delivery,
+          ...(product.tags || []),
+          ...(product.included || []),
+          ...(product.features || [])
         ].join(' ').toLowerCase();
         const matchesSearch = !term || haystack.includes(term);
         return matchesCategory && matchesSearch;
