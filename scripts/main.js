@@ -99,6 +99,7 @@
   const contactOpeners = [document.getElementById('open-contact'), ...document.querySelectorAll('.js-open-contact')].filter(Boolean);
 
   contactOpeners.forEach(control => {
+    control.dataset.contactBound = '1';
     control.addEventListener('click', event => {
       if (!contactTarget) return;
       event.preventDefault();
@@ -156,4 +157,73 @@
     }, { passive: true });
   }
 
+})();
+
+
+// Persistent social shortcuts next to the floating Contact button.
+// Added centrally in JavaScript so every page that has the floating Contact
+// control automatically receives Instagram and Pinterest as well.
+(() => {
+  const initFloatingSocials = () => {
+    const contactButton = document.getElementById('open-contact');
+    if (!contactButton || contactButton.closest('.floating-actions')) return;
+
+    const actions = document.createElement('div');
+    actions.className = 'floating-actions';
+    actions.setAttribute('aria-label', 'Quick contact and social links');
+
+    const makeSocialLink = ({ href, label, shortLabel, className }) => {
+      const link = document.createElement('a');
+      link.className = `floating-social ${className}`;
+      link.href = href;
+      link.target = '_blank';
+      link.rel = 'me noopener noreferrer';
+      link.setAttribute('aria-label', label);
+      link.title = label;
+
+      const icon = document.createElement('span');
+      icon.className = 'floating-social-icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = shortLabel;
+      link.appendChild(icon);
+      return link;
+    };
+
+    const instagram = makeSocialLink({
+      href: 'https://www.instagram.com/zokislevinshop/',
+      label: 'ZokiSlevinShop on Instagram',
+      shortLabel: 'IG',
+      className: 'floating-social-instagram'
+    });
+
+    const pinterest = makeSocialLink({
+      href: 'https://www.pinterest.com/ZokiSlevinShop/',
+      label: 'ZokiSlevinShop on Pinterest',
+      shortLabel: 'P',
+      className: 'floating-social-pinterest'
+    });
+
+    const parent = contactButton.parentNode;
+    parent.insertBefore(actions, contactButton);
+    actions.append(instagram, pinterest, contactButton);
+
+    // Some pages load main.js before the floating Contact button appears in
+    // the markup. Bind the existing smooth-scroll behavior here if needed.
+    if (!contactButton.dataset.contactBound) {
+      contactButton.dataset.contactBound = '1';
+      contactButton.addEventListener('click', event => {
+        const contactTarget = document.getElementById('contact');
+        if (!contactTarget) return;
+        event.preventDefault();
+        contactTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', '#contact');
+      });
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFloatingSocials, { once: true });
+  } else {
+    initFloatingSocials();
+  }
 })();
